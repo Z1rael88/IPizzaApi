@@ -12,3 +12,4 @@ C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Infrastructur
 C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
 C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Infrastructure\obj\Debug\net8.0\Infrastructure.genruntimeconfig.cache
 C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
+C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json

@@ -137,3 +137,4 @@ C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Presentation\
 C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Presentation\Presentation\obj\Debug\net8.0\Presentation.pdb
 C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Presentation\Presentation\obj\Debug\net8.0\Presentation.genruntimeconfig.cache
 C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Presentation\Presentation\obj\Debug\net8.0\ref\Presentation.dll
+C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Presentation\Presentation\obj\Debug\net8.0\Presentation.sourcelink.json
