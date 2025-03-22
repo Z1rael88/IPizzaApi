@@ -8,7 +8,7 @@ public class PizzaRepository(IAppDbContext dbContext) : IPizzaRepository
 {
     public async Task<Pizza> GetPizzaById(int pizzaId)
     {
-        var pizza = await dbContext.Pizzas.Where(x => x.Id == pizzaId).SingleOrDefaultAsync();
+        var pizza = await dbContext.Pizzas.Include(i=>i.Ingredients).Where(x => x.Id == pizzaId).SingleOrDefaultAsync();
         if (pizza == null)
         {
             throw new ArgumentException($"No pizzas with id: {pizzaId} found");
