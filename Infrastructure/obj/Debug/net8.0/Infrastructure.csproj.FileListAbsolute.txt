@@ -1,0 +1,14 @@
+C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Infrastructure\bin\Debug\net8.0\Infrastructure.deps.json
+C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Infrastructure\bin\Debug\net8.0\Infrastructure.runtimeconfig.json
+C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Infrastructure\bin\Debug\net8.0\Infrastructure.dll
+C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Infrastructure\bin\Debug\net8.0\Infrastructure.pdb
+C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Infrastructure\obj\Debug\net8.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfo.cs
+C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Infrastructure\obj\Debug\net8.0\Infrastructure.dll
+C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
+C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
+C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Infrastructure\obj\Debug\net8.0\Infrastructure.genruntimeconfig.cache
+C:\Users\Oleksii\OneDrive\Desktop\University\Engineering\IPizzaApi\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
