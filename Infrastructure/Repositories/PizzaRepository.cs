@@ -19,7 +19,7 @@ public class PizzaRepository(IAppDbContext dbContext) : IPizzaRepository
 
     public async Task<ICollection<Pizza>> GetAllPizzas()
     {
-        return await dbContext.Pizzas.AsNoTracking().ToListAsync();
+        return await dbContext.Pizzas.Include(i=>i.Ingredients).AsNoTracking().ToListAsync();
     }
 
     public async Task<Pizza> CreatePizza(Pizza pizza)
