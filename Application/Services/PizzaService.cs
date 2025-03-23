@@ -2,6 +2,7 @@ using Application.Dtos;
 using Application.Interfaces;
 using Application.Mappers;
 using Infrastructure.Interfaces;
+using Infrastructure.Models;
 
 namespace Application.Services;
 
@@ -20,7 +21,6 @@ public class PizzaService(IPizzaRepository pizzaRepository) : IPizzaService
     {
         var pizzas = await pizzaRepository.GetAllPizzas();
     
-        // Return an empty list if there are no pizzas
         if (pizzas.Count < 1)
         {
             return new List<PizzaResponseDto>();
@@ -51,5 +51,12 @@ public class PizzaService(IPizzaRepository pizzaRepository) : IPizzaService
         var pizza = pizzaRequestDto.ToPizza(pizzaRequestDto.IngredientsIds);
         var newPizza = await pizzaRepository.CreatePizza(pizza);
         return newPizza.ToPizzaResponse(ingredientsDto);
+    }
+
+    public async Task<ICollection<IngredientDto>> GetAllIngredients()
+    {
+       var ingredients = await pizzaRepository.GetAllDefaultIngredients();
+
+       return ingredients.Select(ingredient => ingredient.ToIngredientDto()).ToList();
     }
 }

@@ -27,4 +27,11 @@ public class PizzaController(IPizzaService pizzaService) : ControllerBase
         var pizza = await pizzaService.CreatePizza(pizzaRequestDto);
         return Ok(pizza);
     }
+
+    [HttpGet("/getAllingredients")]
+    public async Task<IActionResult> GetAllIngredients()
+    {
+        var ingredients = await pizzaService.GetAllIngredients();
+        return Ok(ingredients);
+    }
 }

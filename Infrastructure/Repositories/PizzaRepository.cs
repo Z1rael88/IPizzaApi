@@ -53,4 +53,8 @@ public class PizzaRepository(IAppDbContext dbContext) : IPizzaRepository
         return orderedIngredients;
     }
 
+    public async Task<ICollection<Ingredient>> GetAllDefaultIngredients()
+    {
+       return await dbContext.Ingredients.AsNoTracking().ToListAsync();
+    }
 }
