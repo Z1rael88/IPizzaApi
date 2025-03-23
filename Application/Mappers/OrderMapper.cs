@@ -16,12 +16,13 @@ public static class OrderMapper
         };
     }
 
-    public static Order ToOrder(this OrderRequestDto orderRequestDto,ICollection<int> orderedPizzasIds)
+    public static Order ToOrder(this OrderRequestDto orderRequestDto,ICollection<int> orderedPizzasIds,decimal totalPrice)
     {
         return new Order
         {
             Address = orderRequestDto.Address,
-            OrderedPizzasIds = orderedPizzasIds
+            OrderedPizzasIds = orderedPizzasIds,
+            TotalPrice = totalPrice
         };
     }
 

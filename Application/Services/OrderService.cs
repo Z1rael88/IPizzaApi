@@ -50,10 +50,8 @@ public class OrderService(
             var createdPizza = await orderedPizzaRepository.CreateOrderedPizza(pizzaWithDetails);
             createdPizzas.Add(createdPizza);
         }
-
         var order = await orderRepository.CreateOrder(
-            orderRequestDto.ToOrder(createdPizzas.Select(x => x.Id).ToList()));
-        order.TotalPrice = totalPrice;
+            orderRequestDto.ToOrder(createdPizzas.Select(x => x.Id).ToList(),totalPrice));
 
         var orderResponse = new OrderResponseDto
         {
