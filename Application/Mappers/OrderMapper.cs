@@ -5,37 +5,36 @@ namespace Application.Mappers;
 
 public static class OrderMapper
 {
-    public static OrderResponseDto ToOrderResponseDto(this Order order)
+    public static OrderResponseDto ToOrderResponseDto(this Order order,ICollection<OrderedPizza> orderedPizzas, ICollection<AdditionalIngredientDto> additionalIngredientDtos,Pizza pizza)
     {
+        
         return new OrderResponseDto
         {
             Address = order.Address,
-            OrderedPizzas = order.OrderedPizzas.Select(x => x.ToOrderedPizzaDto()).ToList(),
-            TotalPrice = order.TotalPrice
+            TotalPrice = order.TotalPrice,
+            OrderedPizzas = orderedPizzas.Select(x=>x.ToOrderedPizzaResponseDto(additionalIngredientDtos,pizza)).ToList(),
         };
     }
 
-    public static Order ToOrder(this OrderRequestDto orderRequestDto)
+    public static Order ToOrder(this OrderRequestDto orderRequestDto,ICollection<int> orderedPizzasIds)
     {
-        var orderedPizzas = orderRequestDto.OrderedPizzas
-            .Select(x => x.ToOrderedPizza())
-            .Distinct() 
-            .ToList();
-
         return new Order
         {
             Address = orderRequestDto.Address,
-            OrderedPizzas = orderedPizzas,
-            OrderedPizzasIds = orderedPizzas.Select(x => x.Id).Distinct().ToList() 
+            OrderedPizzasIds = orderedPizzasIds
         };
     }
 
-    public static OrderedPizzaDto ToOrderedPizzaDto(this OrderedPizza orderedPizza)
+    public static OrderedPizzaResponseDto ToOrderedPizzaResponseDto(this OrderedPizza orderedPizza,ICollection<AdditionalIngredientDto> additionalIngredientDto,Pizza pizza)
     {
-        return new OrderedPizzaDto
+        return new OrderedPizzaResponseDto
         {
             PizzaId = orderedPizza.PizzaId,
-            AdditionalIngredientsIds = orderedPizza.AdditionalIngredientsIds
+            AdditionalIngredients = additionalIngredientDto,
+            Sum = orderedPizza.Sum,
+            PizzaName = pizza.Name,
+            DoughType = pizza.Dough,
+            Size = pizza.Size
         };
     }
 
@@ -44,7 +43,8 @@ public static class OrderMapper
         return new OrderedPizza
         {
             PizzaId = orderedPizzaDto.PizzaId,
-            AdditionalIngredientsIds = orderedPizzaDto.AdditionalIngredientsIds
+            AdditionalIngredientsIds = orderedPizzaDto.AdditionalIngredients.Select(x=>x.Id).ToList(),
+            Sum = orderedPizzaDto.Sum
         };
     }
 }

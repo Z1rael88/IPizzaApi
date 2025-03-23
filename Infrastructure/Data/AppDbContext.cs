@@ -11,7 +11,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options), IAppDb
     public DbSet<Order> Orders { get; set; }
     public DbSet<OrderedPizza> OrderedPizzas { get; set; }
     public DbSet<Ingredient> Ingredients { get; set; }
-    public DbSet<OrderedPizzaIngredients> OrderedPizzaIngredients { get; set; }
+    public DbSet<ChosenIngredient> ChosenIngredients { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -25,6 +25,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options), IAppDb
         modelBuilder.ApplyConfiguration(new OrderConfiguration());
         modelBuilder.ApplyConfiguration(new OrderedPizzaConfiguration());
         modelBuilder.ApplyConfiguration(new IngredientConfiguration());
+        modelBuilder.ApplyConfiguration(new ChosenIngredientConfiguration());
     }
     public async Task<int> SaveChangesAsync()
     {

@@ -23,4 +23,18 @@ public class OrderedPizzaRepository(IAppDbContext dbContext) : IOrderedPizzaRepo
 
         return orderedPizza;
     }
+
+    public async Task<ICollection<OrderedPizza>> GetAllOrderedPizzasByOrderId(int orderId)
+    {
+        var order = await dbContext.Orders.Where(x => x.Id == orderId).SingleOrDefaultAsync();
+        var ids = order.OrderedPizzasIds;
+        var orderedPizzas = new List<OrderedPizza>();
+        foreach (var id in ids)
+        {
+            var orderedPizza = await dbContext.OrderedPizzas.Where(x => x.Id == id).SingleOrDefaultAsync();
+            orderedPizzas.Add(orderedPizza);
+        }
+
+        return orderedPizzas;
+    }
 }

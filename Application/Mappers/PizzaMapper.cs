@@ -5,6 +5,16 @@ namespace Application.Mappers;
 
 public static class PizzaMapper
 {
+    public static AdditionalIngredientDto ToAdditionalIngredientDto(this ChosenIngredient chosenIngredient)
+    {
+        AdditionalIngredientDto res = new AdditionalIngredientDto
+        {
+            Quantity = chosenIngredient.Quantity,
+            Id = chosenIngredient.Id,
+            Price = chosenIngredient.TotalPrice
+        };
+        return res;
+    }
     public static IngredientDto ToIngredientDto(this Ingredient ingredient)
     {
         IngredientDto ingredientDto = new IngredientDto

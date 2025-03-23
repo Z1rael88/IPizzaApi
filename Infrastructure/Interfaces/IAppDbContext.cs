@@ -10,7 +10,7 @@ public interface IAppDbContext
     DbSet<Order> Orders { get; set; }
     DbSet<OrderedPizza> OrderedPizzas { get; set; }
     DbSet<Ingredient> Ingredients { get; set; }
-    DbSet<OrderedPizzaIngredients> OrderedPizzaIngredients { get; set; }
+    DbSet<ChosenIngredient> ChosenIngredients { get; set; }
     Task<int> SaveChangesAsync();
 
 }

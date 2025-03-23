@@ -2,7 +2,6 @@ using Application.Dtos;
 using Application.Interfaces;
 using Application.Mappers;
 using Infrastructure.Interfaces;
-using Infrastructure.Models;
 
 namespace Application.Services;
 

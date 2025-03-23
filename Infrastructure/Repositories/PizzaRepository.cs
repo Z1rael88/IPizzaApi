@@ -31,9 +31,9 @@ public class PizzaRepository(IAppDbContext dbContext) : IPizzaRepository
 
     public async Task<ICollection<Ingredient>> GetAllIngredients(ICollection<int> ingredientIds)
     {
-        if (ingredientIds == null || !ingredientIds.Any())
+        if (!ingredientIds.Any())
         {
-            throw new ArgumentException("Ingredient IDs cannot be null or empty.");
+            return [];
         }
 
         var ingredients = await dbContext.Ingredients
@@ -56,5 +56,16 @@ public class PizzaRepository(IAppDbContext dbContext) : IPizzaRepository
     public async Task<ICollection<Ingredient>> GetAllDefaultIngredients()
     {
        return await dbContext.Ingredients.AsNoTracking().ToListAsync();
+    }
+
+    public async Task<ChosenIngredient> CreateChosenIngredient(ChosenIngredient chosenIngredient)
+    {
+        var ingredient = await dbContext.ChosenIngredients.AddAsync(chosenIngredient);
+        return ingredient.Entity;
+    }
+
+    public async Task<ICollection<ChosenIngredient>> GetAllChosenIngredientsByAdditionalIngredientId(int additionalIngredientId)
+    {
+        return await dbContext.ChosenIngredients.Where(x => x.IngredientId == additionalIngredientId).ToListAsync();
     }
 }

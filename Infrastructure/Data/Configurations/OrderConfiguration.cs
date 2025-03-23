@@ -10,9 +10,6 @@ public class OrderConfiguration : BaseModelConfiguration<Order>
         base.Configure(builder);
         builder.Property(x => x.OrderedPizzasIds)
             .IsRequired();
-        builder.HasMany(x => x.OrderedPizzas)
-            .WithOne()
-            .HasForeignKey(x => x.OrderId);
         builder.ComplexProperty(x => x.Address)
             .IsRequired();
     }

@@ -9,4 +9,6 @@ public interface IPizzaRepository
     Task<Pizza> CreatePizza(Pizza pizza);
     Task<ICollection<Ingredient>> GetAllIngredients(ICollection<int> ingredientIds);
     Task<ICollection<Ingredient>> GetAllDefaultIngredients();
+    Task<ChosenIngredient> CreateChosenIngredient(ChosenIngredient chosenIngredient);
+    Task<ICollection<ChosenIngredient>> GetAllChosenIngredientsByAdditionalIngredientId(int additionalIngredientId);
 }
