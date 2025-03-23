@@ -8,4 +8,5 @@ public interface IPizzaRepository
     Task<ICollection<Pizza>> GetAllPizzas();
     Task<Pizza> CreatePizza(Pizza pizza);
     Task<ICollection<Ingredient>> GetAllIngredients(ICollection<int> ingredientIds);
+    Task<ICollection<Ingredient>> GetAllDefaultIngredients();
 }
