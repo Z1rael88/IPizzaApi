@@ -10,4 +10,5 @@ public class OrderedPizzaResponseDto
     public int PizzaId { get; set; }
     public DoughType DoughType { get; set; }
     public PizzaSize Size { get; set; }
+    public string PhotoUrl { get; set; }
 }

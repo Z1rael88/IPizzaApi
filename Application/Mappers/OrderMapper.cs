@@ -34,7 +34,8 @@ public static class OrderMapper
             Sum = orderedPizza.Sum,
             PizzaName = pizza.Name,
             DoughType = pizza.Dough,
-            Size = pizza.Size
+            Size = pizza.Size,
+            PhotoUrl = pizza.PhotoUrl
         };
     }
 
