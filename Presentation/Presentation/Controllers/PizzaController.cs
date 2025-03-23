@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Presentation.Controllers;
 
 [Controller]
-[Route("pizza/")]
+[Route("pizzas/")]
 public class PizzaController(IPizzaService pizzaService) : ControllerBase
 {
     [HttpGet("{pizzaId}")]

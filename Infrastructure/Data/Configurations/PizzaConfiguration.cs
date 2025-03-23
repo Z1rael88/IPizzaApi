@@ -12,8 +12,7 @@ public class PizzaConfiguration : BaseModelConfiguration<Pizza>
             .IsRequired();
         builder.Property(x => x.Name)
             .IsRequired();
-        builder.HasMany(x => x.Ingredients)
-            .WithOne();
+        builder.Property(x => x.Ingredientsids).IsRequired();
         builder.Property(x => x.Size)
             .IsRequired();
         builder.Property(x => x.Dough)

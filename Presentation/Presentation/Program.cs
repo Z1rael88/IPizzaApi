@@ -13,6 +13,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IAppDbContext, AppDbContext>();
 builder.Services.AddScoped<IPizzaRepository, PizzaRepository>();
 builder.Services.AddScoped<IPizzaService, PizzaService>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderedPizzaRepository, OrderedPizzaRepository>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("Connection")));
 builder.Services.AddCors(options =>

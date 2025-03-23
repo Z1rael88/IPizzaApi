@@ -8,7 +8,7 @@ public class PizzaRepository(IAppDbContext dbContext) : IPizzaRepository
 {
     public async Task<Pizza> GetPizzaById(int pizzaId)
     {
-        var pizza = await dbContext.Pizzas.Include(i=>i.Ingredients).Where(x => x.Id == pizzaId).SingleOrDefaultAsync();
+        var pizza = await dbContext.Pizzas.Where(x => x.Id == pizzaId).SingleOrDefaultAsync();
         if (pizza == null)
         {
             throw new ArgumentException($"No pizzas with id: {pizzaId} found");
@@ -19,7 +19,7 @@ public class PizzaRepository(IAppDbContext dbContext) : IPizzaRepository
 
     public async Task<ICollection<Pizza>> GetAllPizzas()
     {
-        return await dbContext.Pizzas.Include(i=>i.Ingredients).AsNoTracking().ToListAsync();
+        return await dbContext.Pizzas.AsNoTracking().ToListAsync();
     }
 
     public async Task<Pizza> CreatePizza(Pizza pizza)
@@ -40,13 +40,17 @@ public class PizzaRepository(IAppDbContext dbContext) : IPizzaRepository
             .Where(x => ingredientIds.Contains(x.Id))
             .ToListAsync();
 
+        var orderedIngredients = ingredientIds
+            .Select(id => ingredients.FirstOrDefault(x => x.Id == id)) 
+            .Where(x => x != null)
+            .ToList();
         var missingIngredientIds = ingredientIds.Except(ingredients.Select(x => x.Id)).ToList();
         if (missingIngredientIds.Any())
         {
             throw new ArgumentException($"Ingredients with IDs {string.Join(", ", missingIngredientIds)} not found.");
         }
 
-        return ingredients;
+        return orderedIngredients;
     }
 
 }

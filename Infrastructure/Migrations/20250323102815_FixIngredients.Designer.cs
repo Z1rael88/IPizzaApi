@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -12,9 +13,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250323102815_FixIngredients")]
+    partial class FixIngredients
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,10 +44,15 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int?>("OrderedPizzaId")
+                        .HasColumnType("integer");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("numeric");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrderedPizzaId");
 
                     b.ToTable("Ingredients");
                 });
@@ -104,9 +112,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.PrimitiveCollection<int[]>("AdditionalIngredientsIds")
-                        .HasColumnType("integer[]");
 
                     b.Property<DateOnly>("CreatedDate")
                         .HasColumnType("date");
@@ -189,6 +194,13 @@ namespace Infrastructure.Migrations
                     b.ToTable("Pizzas");
                 });
 
+            modelBuilder.Entity("Infrastructure.Models.Ingredient", b =>
+                {
+                    b.HasOne("Infrastructure.Models.OrderedPizza", null)
+                        .WithMany("AdditionalIngredients")
+                        .HasForeignKey("OrderedPizzaId");
+                });
+
             modelBuilder.Entity("Infrastructure.Models.OrderedPizza", b =>
                 {
                     b.HasOne("Infrastructure.Models.Order", null)
@@ -228,6 +240,11 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Infrastructure.Models.Order", b =>
                 {
                     b.Navigation("OrderedPizzas");
+                });
+
+            modelBuilder.Entity("Infrastructure.Models.OrderedPizza", b =>
+                {
+                    b.Navigation("AdditionalIngredients");
                 });
 #pragma warning restore 612, 618
         }

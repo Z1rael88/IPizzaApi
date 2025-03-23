@@ -7,7 +7,7 @@ public class Pizza : BaseModel
     public string Name { get; set; }
     public string PhotoUrl { get; set; }
     public decimal Price { get; set; }
-    public ICollection<Ingredient> Ingredients { get; set; }
+    public ICollection<int> Ingredientsids { get; set; }
     public PizzaSize Size { get; set; }
     public DoughType Dough { get; set; }
 }

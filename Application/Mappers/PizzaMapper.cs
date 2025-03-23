@@ -16,16 +16,25 @@ public static class PizzaMapper
         return ingredientDto;
     }
 
-    public static PizzaResponseDto ToPizzaResponse(this Pizza pizza)
+    public static Ingredient ToIngredient(this IngredientDto ingredientDto)
     {
-        var ingredientDtos = pizza.Ingredients.Select(ingredient => ingredient.ToIngredientDto()).ToList();
+        Ingredient ingredient = new Ingredient
+        {
+            Name = ingredientDto.Name,
+            Price = ingredientDto.Price,
+            IngredientType = ingredientDto.IngredientType
+        };
+        return ingredient;
+    }
 
+    public static PizzaResponseDto ToPizzaResponse(this Pizza pizza, ICollection<IngredientDto> ingredients)
+    {
         PizzaResponseDto pizzaResponseDto = new PizzaResponseDto
         {
             Dough = pizza.Dough,
             Id = pizza.Id,
             PhotoUrl = pizza.PhotoUrl,
-            Ingredients = ingredientDtos,
+            Ingredients = ingredients,
             Name = pizza.Name,
             Price = pizza.Price,
             Size = pizza.Size
@@ -33,13 +42,13 @@ public static class PizzaMapper
         return pizzaResponseDto;
     }
 
-    public static Pizza ToPizza(this PizzaRequestDto pizzaRequestDto, ICollection<Ingredient> ingredients)
+    public static Pizza ToPizza(this PizzaRequestDto pizzaRequestDto, ICollection<int> ingredientsIds)
     {
         Pizza pizza = new Pizza
         {
             Dough = pizzaRequestDto.Dough,
             PhotoUrl = pizzaRequestDto.PhotoUrl,
-            Ingredients = ingredients,
+            Ingredientsids = ingredientsIds,
             Name = pizzaRequestDto.Name,
             Price = pizzaRequestDto.Price,
             Size = pizzaRequestDto.Size
