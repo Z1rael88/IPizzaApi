@@ -11,7 +11,8 @@ public static class PizzaMapper
         {
             IngredientType = ingredient.IngredientType,
             Name = ingredient.Name,
-            Price = ingredient.Price
+            Price = ingredient.Price,
+            Id = ingredient.Id
         };
         return ingredientDto;
     }
